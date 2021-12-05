@@ -51,4 +51,8 @@ or
 > yarn dev
 ```
 
+<<<<<<< HEAD
 * Access the symfony server at http://localhost:8000 and next.js server at http://localhost:3000
+=======
+* Access the symfony server at http://localhost:8000 and next.js server at http://localhost:3000
+>>>>>>> Update README.md
