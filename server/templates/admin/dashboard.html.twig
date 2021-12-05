@@ -1,0 +1,31 @@
+{% extends "@EasyAdmin/page/content.html.twig" %}
+
+{% block main %}
+    <h1>Appels API</h1>
+
+    <div class="card p-3">
+        
+        {% for message in app.flashes('success') %}
+            <div class="p-3 mb-2 bg-success text-white">
+                {{message}}
+            </div>
+        {% endfor %}
+
+        {% for message in app.flashes('error') %}
+            <div class="p-3 mb-2 bg-danger text-white">
+                {{message}}
+            </div>
+        {% endfor %}
+
+        <div class="mb-3">
+            <h2>Insérer les communes en base de données</h2>
+            <a href="{{ path('api_ville_gouv') }}" class="btn btn-primary">Appeler l'api</a>
+        </div>
+        
+        <div class="mb-3">
+            <h2>Insérer les bennes à verres en base de données</h2>
+            <a href="{{ path('api_record_gouv') }}" class="btn btn-primary">Appeler l'api</a>
+        </div>
+        
+    </div>
+{% endblock %}

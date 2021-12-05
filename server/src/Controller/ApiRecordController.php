@@ -61,7 +61,13 @@ class ApiRecordController extends AbstractController
             Response::HTTP_INTERNAL_SERVER_ERROR // si ça foire
         );
         
-        return $response;
+        if($response->getStatusCode(Response::HTTP_INTERNAL_SERVER_ERROR)) {
+            $this->addFlash('error', $response);
+        } else {
+            $this->addFlash('success', $response);
+        }
+        
+        return $this->redirectToRoute('admin');
     }
 
     #[Route('/records')]
