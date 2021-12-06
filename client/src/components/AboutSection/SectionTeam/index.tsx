@@ -1,12 +1,20 @@
 import React, { FC } from 'react';
-
 import styled from 'styled-components';
-
-import CardEquipe from '../../CardEquipe';
+import { jarallax } from 'jarallax';
+import CardEquipe from '@components/CardEquipe';
 
 const SectionEquipe: FC = () => {
+  const ref = React.useRef(null);
+  React.useEffect(() => {
+    jarallax(ref.current, {
+      type: 'scroll-opacity',
+      speed: 0.2,
+      imgSrc: './assets/img/home_equipe.jpg',
+    });
+  }, [ref]);
+
   return (
-    <VideoJarallax>
+    <ImgJarallax ref={ref}>
       <BoxContent>
         <div className="content">
           <h2>Notre équipe</h2>
@@ -22,19 +30,18 @@ const SectionEquipe: FC = () => {
           <CardEquipe surname={'Charlotte'} name={'Saidi'} image={'./assets/img/profil4.jpg'}/>
         </div>
       </BoxContent>
-    </VideoJarallax>
+    </ImgJarallax>
   );
 };
 
-const VideoJarallax = styled.section`
+const ImgJarallax = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
   background: #000;
   width: 100%;
   min-height: 100vh;
-  background: center / cover no-repeat url("./assets/img/home_equipe.jpg");
-  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 1);
   padding: 10vh 0;
 `;
 
@@ -54,6 +61,7 @@ const BoxContent = styled.div`
     font-weight: 700;
     line-height: 1.2em;
   }
+  
   p {
     margin-bottom: 20px;
     font-size: 1em;

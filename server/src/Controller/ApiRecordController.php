@@ -38,7 +38,7 @@ class ApiRecordController extends AbstractController
 
     #[Route('/gouv/records', name: 'api_record_gouv', methods: ['GET'])]    
     /**
-     * Method insertRecordsFromDataGouv [insertion des bennes à verres en bdd depuis l'api gouvernementale]
+     * Method insertRecordsFromDataGouv [insertion des bennes à verres en bdd depuis api gouvernementale]
      *
      * @param Request $request
      *
@@ -88,7 +88,7 @@ class ApiRecordController extends AbstractController
     {
         $response = new Response();
         if(is_null($record)) {
-            $response->setContent('Elément introuvable');
+            $response->setContent('Element introuvable');
             $response->setStatusCode(Response::HTTP_NOT_FOUND);
         } else {
             $jsonContent = $this->queryGenerator->handleCircularReference($record);
@@ -121,7 +121,7 @@ class ApiRecordController extends AbstractController
             $this->entityManager->flush();
 
             $response->setStatusCode(Response::HTTP_CREATED);
-            $response->setContent('Elément créé avec succès');
+            $response->setContent('Element créé avec succès');
         }
         return $response;
     }
@@ -131,14 +131,14 @@ class ApiRecordController extends AbstractController
     {
         $response = new Response();
         if(is_null($record)) {
-            $response->setContent('Elément introuvable');
+            $response->setContent('Element introuvable');
             $response->setStatusCode(Response::HTTP_NOT_FOUND);
         } else {
             $this->entityManager->remove($record);
             $this->entityManager->flush();
 
             $response->setStatusCode(Response::HTTP_OK);
-            $response->setContent('Elément supprimé avec succès');
+            $response->setContent('Element supprimé avec succès');
         }
         return $response;
     }
@@ -172,7 +172,7 @@ class ApiRecordController extends AbstractController
         $this->entityManager->flush();
 
         $response->setStatusCode(Response::HTTP_OK);
-        $response->setContent('Elément modifié avec succès');
+        $response->setContent('Element modifié avec succès');
         return $response;
     }
 }

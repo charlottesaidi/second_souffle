@@ -1,13 +1,23 @@
 import React, { FC } from 'react';
-
 import styled from 'styled-components';
+import { jarallax, jarallaxVideo } from 'jarallax';
 
 const SectionVideo: FC = () => {
+  const ref = React.useRef(null);
+  React.useEffect(() => {
+    jarallaxVideo();
+    jarallax(ref.current, {
+      type: 'scroll-opacity',
+      speed: 0.2,
+      videoSrc: 'https://www.youtube.com/watch?v=LkiBnkcNKk8'
+    });
+  }, [ref]);
+  
   return (
-    <VideoJarallax>
+    <VideoJarallax ref={ref}>
       <BoxContent>
         <div>
-          <h1>Bienvenue sur Second Souffle</h1>
+          <h1>Second Souffle</h1>
           <p>
             Second souffle est une entreprise digitale, a vocation écologique.
             Nous proposons une application web et mobile permettant de trouver
@@ -25,8 +35,7 @@ const VideoJarallax = styled.section`
   align-items: center;
   width: 100%;
   height: 100vh;
-  background: center / cover no-repeat url("./assets/img/home_banner.png");
-  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.35);
+  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 1) !important;
 `;
 
 const BoxContent = styled.div`
@@ -35,6 +44,8 @@ const BoxContent = styled.div`
   justify-content: center;
   align-items: center;
   padding: 15px 5%;
+  mix-blend-mode: difference;
+  z-index: -1;
 
   h1,
   p {
@@ -44,7 +55,7 @@ const BoxContent = styled.div`
 
   h1 {
     margin-bottom: 50px;
-    font-size: 3.5em;
+    font-size: 6.5em;
     font-weight: 700;
     line-height: 1.2em;
   }
