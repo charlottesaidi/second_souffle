@@ -1,5 +1,12 @@
 # Second Souffle
 
+## Outils
+- Back et endpoints api : Symfony 5.3
+- Front : Next 11.1.2, React 17.0.2
+- APIs externes :  
+[Data.Toulouse-métropole : Points d'Apport Volontaire - Déchets et Moyens Techniques](https://data.toulouse-metropole.fr/explore/dataset/points-dapport-volontaire-dechets-et-moyens-techniques/api/?rows=20&refine.commune=Toulouse)  
+[Découpage administratif : Communes](https://geo.api.gouv.fr/decoupage-administratif/communes)
+
 ## Installation
 * Install [Composer](https://getcomposer.org/download).
 * Install [Yarn](https://yarnpkg.com/) or [NodeJS](https://nodejs.org/).
