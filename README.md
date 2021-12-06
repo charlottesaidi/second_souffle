@@ -1,4 +1,25 @@
-# Second Souffle
+# Second Souffle  
+
+#### Nouvelle entité : User + système d'authentification  
+
+Création bdd si besoin :  
+```bash
+Symfony console doctrine:database:create
+```
+Migration :  
+```bash
+Symfony console doctrine:migration:migrate
+```  
+Fixtures pour vos identifiants :  
+```bash
+Symfony console doctrine:fixture:load
+```  
+#### Connexion admin  
+Serveur :  
+```bash
+Symfony server:start
+```  
+Connexion : http://127.0.0.1:8000, redirection sur ^/admin  
 
 ## Outils
 - Back et endpoints api : Symfony 5.3
@@ -29,26 +50,6 @@ or
 ```
 
 * Finally, setup yours ``.env.local`` as the [.env](.env)  
-#### Nouvelle entité : User + système d'authentification  
-
-Création bdd si besoin :  
-```bash
-Symfony console doctrine:database:create
-```
-Migration :  
-```bash
-Symfony console doctrine:migration:migrate
-```  
-Fixtures pour vos identifiants :  
-```bash
-Symfony console doctrine:fixture:load
-```  
-#### Connexion admin  
-Serveur :  
-```bash
-Symfony server:start
-```  
-Connexion : http://127.0.0.1:8000, redirection sur ^/admin
 
 ## Usage
 ```
