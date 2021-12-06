@@ -22,10 +22,37 @@ class AppFixtures extends Fixture
         $admin1->setEmail('charlotte.saidi@secondsouffle.fr')
             ->setPassword($this->passwordHasher->hashPassword(
                 $admin1,
-                'Wxcvbn2020!'
+                'azerty456'
             ))
             ->setRoles(['ROLE_ADMIN']);
         $manager->persist($admin1);
+        
+        $admin2 = new User();
+        $admin2->setEmail('jeremy.baudrin@secondsouffle.fr')
+            ->setPassword($this->passwordHasher->hashPassword(
+                $admin2,
+                'azerty258'
+            ))
+            ->setRoles(['ROLE_ADMIN']);
+        $manager->persist($admin2);
+        
+        $admin3 = new User();
+        $admin3->setEmail('quentin.vannarath@secondsouffle.fr')
+            ->setPassword($this->passwordHasher->hashPassword(
+                $admin3,
+                'azerty147'
+            ))
+            ->setRoles(['ROLE_ADMIN']);
+        $manager->persist($admin3);
+        
+        $admin4 = new User();
+        $admin4->setEmail('lucas.barcq@secondsouffle.fr')
+            ->setPassword($this->passwordHasher->hashPassword(
+                $admin1,
+                'azerty369'
+            ))
+            ->setRoles(['ROLE_ADMIN']);
+        $manager->persist($admin4);
 
         $manager->flush();
     }
