@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import CardEquipe from '@components/CardEquipe';
 
 const SectionEquipe: FC = () => {
-
   return (
     <ImgJarallax>
       <BoxContent>
@@ -15,10 +14,10 @@ const SectionEquipe: FC = () => {
           </p>
         </div>
         <div className="box-card">
-          <CardEquipe />
-          <CardEquipe />
-          <CardEquipe />
-          <CardEquipe />
+          <CardEquipe surname={'Quentin'} name={'Vannarath'} image={'./assets/img/profil.jpg'} job={'Développeur Frontend'}/>
+          <CardEquipe surname={'Lucas'} name={'Barq'} image={'./assets/img/profil2.jpg'} job={'Développeur Frontend'}/>
+          <CardEquipe surname={'Jérémy'} name={'Baudrin'} image={'./assets/img/profil3.jpg'} job={'Développeur Backend'}/>
+          <CardEquipe surname={'Charlotte'} name={'Saidi'} image={'./assets/img/profil4.jpg'} job={'Développeuse Backend'}/>
         </div>
       </BoxContent>
     </ImgJarallax>

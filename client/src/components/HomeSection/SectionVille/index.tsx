@@ -19,17 +19,17 @@ const SectionLinearAbout: FC = () => {
             </p>
           </div>
           <div className="gridCard">
-            <Link href={'/map/toulouse'}>
-              <CityCard name={'Toulouse'} image={'./assets/img/toulouse.jpg'} />
+            <Link href={'/map/paris'}>
+              <CityCard name={'Paris'} image={'./assets/img/paris.jpg'} />
             </Link>
             <Link href={'/map/toulouse'}>
               <CityCard name={'Toulouse'} image={'./assets/img/toulouse.jpg'} />
             </Link>
-            <Link href={'/map/toulouse'}>
-              <CityCard name={'Toulouse'} image={'./assets/img/toulouse.jpg'} />
+            <Link href={'/map/lyon'}>
+              <CityCard name={'Lyon'} image={'./assets/img/lyon.jpg'} />
             </Link>
-            <Link href={'/map/toulouse'}>
-              <CityCard name={'Toulouse'} image={'./assets/img/toulouse.jpg'} />
+            <Link href={'/map/rouen'}>
+              <CityCard name={'Rouen'} image={'./assets/img/rouen.jpg'} />
             </Link>
           </div>
         </div>
