@@ -1,0 +1,19 @@
+{% extends "@EasyAdmin/page/content.html.twig" %}
+
+{% block main %}
+    <h1>Appels API</h1>
+
+    <div class="card mt-4">
+
+        <div class="m-4">
+            <h2>Insérer les communes en base de données</h2>
+            <a href="{{ path('api_ville_gouv') }}" class="btn btn-primary">Appeler l'api</a>
+        </div>
+        
+        <div class="m-4">
+            <h2>Insérer les bennes à verres de Toulouse en base de données</h2>
+            <a href="{{ path('api_record_gouv') }}" class="btn btn-primary">Appeler l'api</a>
+        </div>
+        
+    </div>
+{% endblock %}

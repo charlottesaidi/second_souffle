@@ -31,6 +31,19 @@ class RecordRepository extends ServiceEntityRepository
             ->getArrayResult()
         ;
     }
+    
+    public function findByVille($ville)
+    {
+        return $this->createQueryBuilder('r')
+            ->select('r, c, v')
+            ->leftJoin('r.coordonnee', 'c')
+            ->leftJoin('r.ville', 'v')
+            ->andWhere('v.nom LIKE :ville')
+            ->setParameter('ville', '%'.$ville.'%')
+            ->getQuery()
+            ->getArrayResult()
+        ;
+    }
     // /**
     //  * @return Record[] Returns an array of Record objects
     //  */

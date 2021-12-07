@@ -15,10 +15,10 @@ const SectionEquipe: FC = () => {
           </p>
         </div>
         <div className="box-card">
-          <CardEquipe surname={'Quentin'} name={'Vannarath'} image={'./assets/img/profil.jpg'}/>
-          <CardEquipe surname={'Lucas'} name={'Barq'} image={'./assets/img/profil2.jpg'}/>
-          <CardEquipe surname={'Jérémy'} name={'Baudrin'} image={'./assets/img/profil3.jpg'}/>
-          <CardEquipe surname={'Charlotte'} name={'Saidi'} image={'./assets/img/profil4.jpg'}/>
+          <CardEquipe />
+          <CardEquipe />
+          <CardEquipe />
+          <CardEquipe />
         </div>
       </BoxContent>
     </ImgJarallax>
@@ -86,7 +86,7 @@ const BoxContent = styled.div`
     }
 
     .box-card {
-      grid-gap: 30px;
+      grid-gap: 15px;
     }
   }
 `;

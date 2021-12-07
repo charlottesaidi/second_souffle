@@ -23,13 +23,13 @@ const SectionLinearAbout: FC = () => {
               <CityCard name={'Toulouse'} image={'./assets/img/toulouse.jpg'} />
             </Link>
             <Link href={'/map/toulouse'}>
-              <CityCard name={'Paris'} image={'./assets/img/paris.jpg'} />
+              <CityCard name={'Toulouse'} image={'./assets/img/toulouse.jpg'} />
             </Link>
             <Link href={'/map/toulouse'}>
-              <CityCard name={'Rouen'} image={'./assets/img/rouen.jpg'} />
+              <CityCard name={'Toulouse'} image={'./assets/img/toulouse.jpg'} />
             </Link>
             <Link href={'/map/toulouse'}>
-              <CityCard name={'Lyon'} image={'./assets/img/lyon.jpg'} />
+              <CityCard name={'Toulouse'} image={'./assets/img/toulouse.jpg'} />
             </Link>
           </div>
         </div>

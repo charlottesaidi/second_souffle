@@ -2,22 +2,15 @@ import React, { FC } from 'react';
 
 import styled from 'styled-components';
 
-type Props = {
-  name: string;
-  surname: string;
-  image: string;
-};
-
-const CardEquipe: FC<Props> = ({ name, surname, image }: Props) => {
+const CardEquipe: FC = () => {
   return (
     <Card>
       {/* top */}
-      {/* <div className="card-image"></div> */}
-      <CardImage image={image}/>
+      <div className="card-image"></div>
       {/* bottom */}
       <div className="card-content">
         {/* name */}
-        <p className="card-content__name">{ surname } { name }</p>
+        <p className="card-content__name">John Doe</p>
         {/* text */}
         <p className="card-content__text">
           Développeur Front sur le projet Second Souffle
@@ -43,12 +36,18 @@ const Card = styled.div`
   justify-content: space-between;
   margin-bottom: 20px;
 
+  .card-image,
   .card-content {
     border-radius: 5px;
   }
 
+  .card-image {
+    height: 139px;
+    background: center / cover no-repeat url("./assets/img/profil.jpg");
+  }
+
   .card-content {
-    height: 130px;
+    height: 196px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -105,15 +104,6 @@ const Card = styled.div`
   @media screen and (min-width: 765px) {
     margin-bottom: 0;
   }
-`;
-
-const CardImage = styled.div<{ image: string }>`
-  border-radius: 5px;
-  height: 200px;
-  background-image: url(${({ image }) => image});
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 `;
 
 export default CardEquipe;

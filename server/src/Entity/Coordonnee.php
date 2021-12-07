@@ -35,6 +35,10 @@ class Coordonnee
      */
     private $record;
 
+    public function __toString() {
+        return 'latitude : ' .$this->latitude. ' longitude : ' .$this->longitude;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

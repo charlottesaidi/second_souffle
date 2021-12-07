@@ -41,6 +41,10 @@ class Ville
      */
     private $records;
 
+    public function __toString() {
+        return $this->nom;
+    }
+
     public function __construct()
     {
         $this->records = new ArrayCollection();
