@@ -15,7 +15,7 @@ const SectionLinearAbout: FC = () => {
             une benne a verre dans des secteurs donnés.
           </p>
         </div>
-        <Image />
+        <BoxImage />
       </BoxContent>
     </Linear>
   );
@@ -99,7 +99,7 @@ const BoxContent = styled.div`
   }
 `;
 
-const Image = styled.div`
+const BoxImage = styled.div`
   width: 100%;
   height: 250px;
   background: center / contain no-repeat url("./assets/img/mission.png");
