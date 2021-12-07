@@ -1,21 +1,19 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { jarallax, jarallaxVideo } from 'jarallax';
-
 
 const SectionVideo: FC = () => {
-  const ref = React.useRef(null);
-  React.useEffect(() => {
-    jarallaxVideo();
-    jarallax(ref.current, {
-      type: 'scroll-opacity',
-      speed: 0.2,
-      videoSrc: 'https://www.youtube.com/watch?v=LkiBnkcNKk8',
-    });
-  }, [ref]);
 
   return (
-    <VideoJarallax ref={ref}>
+    <VideoJarallax>
+      <iframe
+        width="853"
+        height="480"
+        src="https://www.youtube.com/embed/LkiBnkcNKk8?autoplay=1&loop=1&controls=0&mute=1&playlist=LkiBnkcNKk8"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        title="Embedded youtube"
+      />
       <BoxContent>
         <div>
           <h1>Bienvenue sur Second Souffle</h1>
@@ -36,7 +34,17 @@ const VideoJarallax = styled.section`
   align-items: center;
   width: 100%;
   height: 100vh;
-  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 1) !important;
+  position: relative;
+
+  iframe {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+  }
 `;
 
 const BoxContent = styled.div`
@@ -46,7 +54,8 @@ const BoxContent = styled.div`
   align-items: center;
   padding: 15px 5%;
   mix-blend-mode: difference;
-  z-index: -1;
+  position: relative;
+  z-index: 1;
 
   h1,
   p {
@@ -65,20 +74,19 @@ const BoxContent = styled.div`
     font-size: 1.2em;
     font-weight: 500;
     line-height: 1.2em;
-    @media screen and (min-width:1200px){
+    @media screen and (min-width: 1200px) {
       width: 72%;
     }
   }
 
-  div{
-    @media screen and (min-width: 1200px){
+  div {
+    @media screen and (min-width: 1200px) {
       display: flex;
       justify-content: center;
       flex-direction: column;
       align-items: center;
     }
   }
-  
 `;
 
 export default SectionVideo;

@@ -2,20 +2,11 @@ import React, { FC } from 'react';
 
 import styled from 'styled-components';
 import Chiffre from '@components/Chiffre';
-import { jarallax } from 'jarallax';
 
 const SectionChiffre: FC = () => {
-  const ref = React.useRef(null);
-  React.useEffect(() => {
-    jarallax(ref.current, {
-      type: 'scroll-opacity',
-      speed: 0.2,
-      imgSrc: './assets/img/chiffre.jpg',
-    });
-  }, [ref]);
 
   return (
-    <ImgJarallax ref={ref}>
+    <ImgJarallax>
       <BoxContent>
         <div>
           <h2>Chiffres clés</h2>
@@ -40,8 +31,13 @@ const ImgJarallax = styled.section`
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-height: 100vh;
-  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 1);
+  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, .4);
+  background-image: url('./assets/img/chiffre.jpg');
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   padding: 5vh 0;
 `;
 
