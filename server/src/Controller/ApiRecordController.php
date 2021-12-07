@@ -62,9 +62,9 @@ class ApiRecordController extends AbstractController
         );
         
         if($response->getStatusCode(Response::HTTP_INTERNAL_SERVER_ERROR)) {
-            $this->addFlash('error', $response);
+            $this->addFlash('error', $response->getContent());
         } else {
-            $this->addFlash('success', $response);
+            $this->addFlash('success', $response->getContent());
         }
         
         return $this->redirectToRoute('admin');
@@ -76,11 +76,14 @@ class ApiRecordController extends AbstractController
         $response = new Response();
         $adresse = $request->query->get('adresse');
         $voie = $request->query->get('voie');
+        $ville = $request->query->get('commune');
         
-        if (is_null($adresse) || empty($adresse) || is_null($voie) || empty($voie)) { 
-            $records = $this->recordRepository->findAll();
-        } else { 
+        if (!is_null($adresse) || !empty($adresse) || !is_null($voie) || !empty($voie)) { 
             $records = $this->recordRepository->findByAdresse($adresse, $voie);
+        } elseif (is_null($adresse) || empty($adresse)) {
+            $records = $this->recordRepository->findByVille($ville);
+        } else { 
+            $records = $this->recordRepository->findAll();
         }
         $jsonContent = $this->queryGenerator->handleCircularReference($records);
         $response->setStatusCode(Response::HTTP_OK);

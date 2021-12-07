@@ -51,9 +51,9 @@ class ApiVilleController extends AbstractController
         );
         
         if($response->getStatusCode(Response::HTTP_INTERNAL_SERVER_ERROR)) {
-            $this->addFlash('error', $response);
+            $this->addFlash('error', $response->getContent());
         } else {
-            $this->addFlash('success', $response);
+            $this->addFlash('success', $response->getContent());
         }
         
         return $this->redirectToRoute('admin');
