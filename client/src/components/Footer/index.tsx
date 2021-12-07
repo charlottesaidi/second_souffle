@@ -21,6 +21,7 @@ const Container = styled.footer`
         font-size: .8em;
         font-weight: 600;
         color: #fff;
+        text-align: center;
     }
 `;
 
