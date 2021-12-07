@@ -29,6 +29,11 @@ const Card = styled.div<{ image: string }>`
   border-radius: 10px;
   background: center / cover no-repeat url(${({ image }) => image});
   position: relative; 
+  transition: all 0.3s ease-in-out;
+
+  :hover {
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.4);
+  }
 
   @media screen and (min-width: 769px) {
     height: 200px;

@@ -1,20 +1,11 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { jarallax } from 'jarallax';
 import CardEquipe from '@components/CardEquipe';
 
 const SectionEquipe: FC = () => {
-  const ref = React.useRef(null);
-  React.useEffect(() => {
-    jarallax(ref.current, {
-      type: 'scroll-opacity',
-      speed: 0.2,
-      imgSrc: './assets/img/home_equipe.jpg',
-    });
-  }, [ref]);
 
   return (
-    <ImgJarallax ref={ref}>
+    <ImgJarallax>
       <BoxContent>
         <div className="content">
           <h2>Notre équipe</h2>
@@ -43,6 +34,13 @@ const ImgJarallax = styled.section`
   min-height: 100vh;
   box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 1);
   padding: 10vh 0;
+  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, .4);
+  background-image: url('./assets/img/home_equipe.jpg');
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 const BoxContent = styled.div`

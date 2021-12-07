@@ -9,7 +9,7 @@ const SectionLinear: FC = () => {
     <Linear>
       <BoxContent>
         <AboutHome />
-        <Image/>
+        <BoxImage/>
       </BoxContent>
     </Linear>
   );
@@ -50,7 +50,7 @@ const BoxContent = styled.div`
   } 
 `;
 
-const Image = styled.div`
+const BoxImage = styled.div`
   display: none;
   width: 60%;
   height: 250px;
