@@ -36,12 +36,11 @@ const VideoJarallax = styled.section`
   height: 100vh;
 
   iframe {
-    position: absolute;
-    z-index: 1;
     width: 100%;
     height: 100%;
-    left: 0;
-    top: 0;
+    position: fixed;
+    top:0;
+    z-index: -999;
     pointer-events: none;
   }
 `;
@@ -53,7 +52,7 @@ const BoxContent = styled.div`
   align-items: center;
   padding: 15px 5%;
   mix-blend-mode: difference;
-  z-index: 1;
+  z-index: -999;
 
   h1,
   p {
