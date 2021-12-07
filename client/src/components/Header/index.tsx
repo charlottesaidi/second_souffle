@@ -45,7 +45,7 @@ const BoxHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 15px 3%;
-  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.8);
 `;
 
 const Logo = styled.div`

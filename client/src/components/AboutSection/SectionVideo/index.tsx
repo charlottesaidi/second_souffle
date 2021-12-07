@@ -65,6 +65,9 @@ const BoxContent = styled.div`
     font-size: 6.5em;
     font-weight: 700;
     line-height: 1.2em;
+    @media screen and (max-width: 480px) {
+      font-size: 3rem;
+    }
   }
   p {
     font-size: 1.2em;
