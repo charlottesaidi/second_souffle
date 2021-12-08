@@ -84,6 +84,14 @@ class ApiVilleController extends AbstractController
         return $response;
     }
 
+    #[Route('/villes/count')]
+    public function countRecord() {
+        $response = new Response;
+        $response->setContent($this->villeRepository->countElements());
+        return $response;
+    
+    }
+
     #[Route('/ville/{nom}', methods: ['GET'])] 
     public function show(Ville $ville) 
     {

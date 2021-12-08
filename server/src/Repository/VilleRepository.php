@@ -43,6 +43,13 @@ class VilleRepository extends ServiceEntityRepository
             ->getArrayResult();
     }
 
+    public function countElements() {
+        return $this->createQueryBuilder('v')
+            ->select('count(v.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
     // /**
     //  * @return Ville[] Returns an array of Ville objects
     //  */
