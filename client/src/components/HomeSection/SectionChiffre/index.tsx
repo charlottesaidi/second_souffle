@@ -17,9 +17,7 @@ const SectionChiffre: FC = () => {
           <Chiffre />
         </div>
         <p>
-          Second souffle est une entreprise digitale, a vocation écologique.
-          Nous proposons une application web et mobile permettant de trouver une
-          benne a verre dans des secteurs donnés.
+          Voici quelques chiffres clés qui nous permettent de vous connaître et de vous démontrer le potentiel de notre entreprise. Nous sommes à la recherche de nouveaux clients et de nouveaux partenaires. 
         </p>
       </BoxContent>
     </ImgJarallax>
