@@ -18,9 +18,9 @@ const SectionVideo: FC = () => {
         <div>
           <h1>Bienvenue sur Second Souffle</h1>
           <p>
-            Second souffle est une entreprise digitale, a vocation écologique.
+            Second souffle est une entreprise digitale, à vocation écologique.
             Nous proposons une application web et mobile permettant de trouver
-            une benne a verre dans des secteurs donnés.
+            une benne à verre dans des secteurs donnés.
           </p>
         </div>
       </BoxContent>
