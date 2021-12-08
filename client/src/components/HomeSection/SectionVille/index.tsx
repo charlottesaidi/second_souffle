@@ -13,9 +13,7 @@ const SectionLinearAbout: FC = () => {
           <div className="content">
             <h2>Sélectionner une ville disponible</h2>
             <p>
-              Second souffle est une entreprise digitale, a vocation écologique.
-              Nous proposons une application web et mobile permettant de trouver
-              une benne a verre dans des secteurs donnés.
+              Pour commencer à utiliser le site, vous devez choisir une ville correspond à votre localisation. Si vous ne trouvez pas votre ville, nous vous invitons à nous la signaler. Nous nous efforcerons de la corriger dans les plus brefs délais.
             </p>
           </div>
           <div className="gridCard">
