@@ -7,7 +7,7 @@ const AboutHome: FC = () => {
   return (
     <About>
       <h2>À propos</h2>
-      <p>Second Souffle à pour vocation de simplifié la recherche de benne à verre présente sur un secteur géographique donné.</p>
+      <p>Second Souffle a pour vocation de simplifier la recherche de benne à verre présente sur un secteur géographique donné.</p>
       <AboutLink href={'/about'}>à propos</AboutLink>
     </About>
   );
