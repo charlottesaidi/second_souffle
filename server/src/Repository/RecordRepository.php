@@ -44,6 +44,14 @@ class RecordRepository extends ServiceEntityRepository
             ->getArrayResult()
         ;
     }
+
+    public function countElements() {
+        return $this->createQueryBuilder('r')
+            ->select('count(r.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+    
     // /**
     //  * @return Record[] Returns an array of Record objects
     //  */

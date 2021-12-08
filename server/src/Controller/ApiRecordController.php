@@ -70,6 +70,14 @@ class ApiRecordController extends AbstractController
         return $this->redirectToRoute('admin');
     }
 
+    #[Route('/records/count')]
+    public function countRecord() {
+        $response = new Response;
+        $response->setContent($this->recordRepository->countElements());
+        return $response;
+    
+    }
+
     #[Route('/records')]
     public function getRecords(Request $request) 
     {
