@@ -13,20 +13,20 @@ const SectionLinearAbout: FC = () => {
           <div className="content">
             <h2>Sélectionner une ville disponible</h2>
             <p>
-              Pour commencer à utiliser le site, vous devez choisir une ville correspond à votre localisation. Si vous ne trouvez pas votre ville, nous vous invitons à nous la signaler. Nous nous efforcerons de la corriger dans les plus brefs délais.
+              Pour commencer à utiliser le site, vous devez choisir une ville correspond à votre localisation.<br/><br/> Si vous ne trouvez pas votre ville, nous vous invitons à nous la signaler. Nous nous efforcerons de la corriger dans les plus brefs délais.
             </p>
           </div>
           <div className="gridCard">
-            <Link href={'/map/paris'}>
+            <Link href={'/map/paris'} className='disabled-link'>
               <CityCard name={'Paris'} image={'./assets/img/paris.jpg'} />
             </Link>
             <Link href={'/map/toulouse'}>
               <CityCard name={'Toulouse'} image={'./assets/img/toulouse.jpg'} />
             </Link>
-            <Link href={'/map/lyon'}>
+            <Link href={'/map/lyon'} className='disabled-link'>
               <CityCard name={'Lyon'} image={'./assets/img/lyon.jpg'} />
             </Link>
-            <Link href={'/map/rouen'}>
+            <Link href={'/map/rouen'} className='disabled-link'>
               <CityCard name={'Rouen'} image={'./assets/img/rouen.jpg'} />
             </Link>
           </div>
@@ -99,6 +99,9 @@ const BoxContent = styled.div`
     gap: 1em;
     @media screen and (min-width : 1200px){
       width: 48%;
+    }
+    .disabled-link {
+      pointer-events: none;
     }
   }
   .sectionVille{

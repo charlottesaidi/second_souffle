@@ -17,7 +17,7 @@ const SectionChiffre: FC = () => {
           <Chiffre />
         </div>
         <p>
-          Voici quelques chiffres clés qui nous permettent de vous connaître et de vous démontrer le potentiel de notre entreprise. Nous sommes à la recherche de nouveaux clients et de nouveaux partenaires. 
+          Voici quelques chiffres clés qui nous permettent de vous connaître et de vous démontrer le potentiel de notre entreprise.<br/><br/> Nous sommes à la recherche de nouveaux clients et de nouveaux partenaires. 
         </p>
       </BoxContent>
     </ImgJarallax>
@@ -64,7 +64,7 @@ const BoxContent = styled.div`
     font-weight: 500;
     line-height: 1.2em;
     @media screen and (min-width: 1200px) {
-      width: 50%;
+      width: 45%;
     }
   }
 
