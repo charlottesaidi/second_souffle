@@ -9,8 +9,7 @@ const SectionEquipe: FC = () => {
         <div className="content">
           <h2>Notre équipe</h2>
           <p>
-            Notre équipe composer de quatres développeurs, est une équipe jeune
-            et dynamique.
+            Notre équipe est composée de développeurs, designers et chefs de projet. Nous sommes une équipe jeune et dynamique qui aime travailler ensemble.<br/><br/> Chaque personne de notre équipe est passionnée par le développement web et est motivée par le monde du numérique.
           </p>
         </div>
         <div className="box-card">
@@ -45,6 +44,10 @@ const ImgJarallax = styled.section`
 const BoxContent = styled.div`
   width: 100%;
   padding: 15px 5%;
+  @media screen and (min-width: 1200px) {
+    display: flex;
+    justify-content: space-between;
+  }
 
   h2,
   p {
@@ -67,6 +70,9 @@ const BoxContent = styled.div`
   }
 
   .box-card {
+    @media screen and (min-width: 1200px) {
+      width: 48%;
+    }
     @media screen and (min-width: 765px) {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -82,6 +88,9 @@ const BoxContent = styled.div`
 
     .content {
       width: 40%;
+      @media screen and (min-width: 1200px) {
+      width: 48%;
+      }
     }
 
     .box-card {

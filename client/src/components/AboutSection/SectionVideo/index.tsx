@@ -18,9 +18,7 @@ const SectionVideo: FC = () => {
         <div>
           <h1>Second Souffle</h1>
           <p>
-            Second souffle est une entreprise digitale, à vocation écologique.
-            Nous proposons une application web et mobile permettant de trouver
-            une benne à verre dans des secteurs donnés.
+            Second Souffle vous permettra de découvrir les bennes à verres présents dans nos différentes villes. Vous pourrez également vous géolocaliser et trouver les bennes les plus proches de chez vous.
           </p>
         </div>
       </BoxContent>

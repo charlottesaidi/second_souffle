@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const Footer: FC = () => {
   return (
     <Container>
-      <p>Second Souffle © 2019 - 2021. Tous droits réservés.</p>
+      <p>Second Souffle © 2021. Tous droits réservés.</p>
     </Container>
   );
 };

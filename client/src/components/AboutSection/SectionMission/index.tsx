@@ -8,11 +8,10 @@ const SectionLinearAbout: FC = () => {
       <BoxContent>
         <div className="content">
           <h2>Nos Missions</h2>
-          <h3>Lorem ipsum dolor sit amet, consectetur adipiscing.</h3>
           <p>
-            Second souffle est une entreprise digitale, a vocation écologique.
-            Nous proposons une application web et mobile permettant de trouver
-            une benne a verre dans des secteurs donnés.
+          Trouver la benne à verre le plus proche de chez vous, en proposant des services de qualité et de confiance.<br/><br/>
+          Permettre une géolocalisation de votre emplacement.<br/><br/> 
+          Effectuer des recherches des bennes à verre en fonction des villes disponibles sur notre site.  
           </p>
         </div>
         <BoxImage />
@@ -56,7 +55,6 @@ const BoxContent = styled.div`
   padding: 15px 5%;
 
   h2,
-  h3,
   p {
     color: #fff;
     text-align: left;
@@ -66,13 +64,6 @@ const BoxContent = styled.div`
     margin-bottom: 20px;
     font-size: 2.4em;
     font-weight: 700;
-    line-height: 1.2em;
-  }
-
-  h3 {
-    margin-bottom: 20px;
-    font-size: 1.8em;
-    font-weight: 600;
     line-height: 1.2em;
   }
 

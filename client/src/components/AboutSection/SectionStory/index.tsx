@@ -9,9 +9,7 @@ const SectionLinearAbout: FC = () => {
         <div>
           <h2>Notre histoire</h2>
           <p>
-            Second souffle est une entreprise digitale, a vocation écologique.
-            Nous proposons une application web et mobile permettant de trouver
-            une benne a verre dans des secteurs donnés.
+            Le site est né en 2021, et nous sommes toujours à la recherche de nouveaux talents.<br/><br/> Nous avons décidé de créer un site web qui permet de trouver des bennes à verres et facilite la vie des citoyens pour leur permettre de recycler rapidement et facilement le verre. 
           </p>
         </div>
         <BoxImage />
@@ -82,11 +80,13 @@ const BoxContent = styled.div`
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      width: 48%;
     }
   }
 
   @media screen and (min-width: 1200px) {
     flex-direction: row;
+    justify-content: space-between;
   }
 `;
 
@@ -97,6 +97,7 @@ const BoxImage = styled.div`
 
   @media screen and (min-width: 1200px) {
     height: 350px;
+    width: 48%;
   }
 
   @media screen and (min-width: 765px) {
