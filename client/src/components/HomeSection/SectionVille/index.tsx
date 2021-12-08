@@ -102,6 +102,7 @@ const BoxContent = styled.div`
     }
     .disabled-link {
       pointer-events: none;
+      opacity: 0.7;
     }
   }
   .sectionVille{
