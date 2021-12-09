@@ -1,7 +1,7 @@
 import Page from '@components/Page';
 import { NextPage } from 'next';
 import React from 'react';
-import MapBox from "../../components/Mapbox";
+import MapBox from '../../components/Mapbox';
 
 
 
@@ -10,7 +10,7 @@ const MapPage: NextPage = () => {
     <Page name={'Carte'}>
       <MapBox/>
     </Page>  
-  )
+  );
 };
 
 
