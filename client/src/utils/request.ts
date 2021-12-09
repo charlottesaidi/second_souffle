@@ -1,5 +1,5 @@
 import { ApiRequestConfig, ApiResponse } from 'src/types/api';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 
 const createApiUrl = (url: string): string => {
   return `${process.env.NEXT_PUBLIC_API_PATH}${url}`;
