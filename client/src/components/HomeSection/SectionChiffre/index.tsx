@@ -1,9 +1,34 @@
-import React, { FC } from 'react';
-
+import React, { FC, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Chiffre from '@components/Chiffre';
+import { countDumpsters } from 'src/stores/dumpsters';
+import { countUsers } from 'src/stores/users';
+import { countCities } from 'src/stores/villes';
 
 const SectionChiffre: FC = () => {
+ const [dumspterCount, setDumpsterCount] = useState<number>(0);
+ const [usersCount, setUsersCount] = useState<number>(0);
+ const [citiesCount, setCitiesCount] = useState<number>(0);
+
+  useEffect(() => {
+    const fetchDumpsters = async () => {
+      const { data } = await countDumpsters();
+      setDumpsterCount(data || 0);
+     }; 
+     fetchDumpsters();
+    const fetchUsers = async () => {
+      const { data } = await countUsers();
+      setUsersCount(data || 0);
+     }; 
+     fetchUsers();
+    const fetchCities = async () => {
+      const { data } = await countCities();
+      setCitiesCount(data || 0);
+     }; 
+     fetchCities();
+  }, []);
+
+
 
   return (
     <ImgJarallax>
@@ -12,9 +37,9 @@ const SectionChiffre: FC = () => {
           <h2>Chiffres clés</h2>
         </div>
         <div className="box-chiffre">
-          <Chiffre />
-          <Chiffre />
-          <Chiffre />
+          <Chiffre data={dumspterCount} title="nombre de bennes"/>
+          <Chiffre data={usersCount} title="nombre d'utilisateurs"/>
+          <Chiffre data={citiesCount} title="nombre de villes"/>
         </div>
         <p>
           Voici quelques chiffres clés qui nous permettent de vous connaître et de vous démontrer le potentiel de notre entreprise.<br/><br/> Nous sommes à la recherche de nouveaux clients et de nouveaux partenaires. 

@@ -49,7 +49,11 @@ const Mapbox: FC<Props> = ({ data, preparedCities, currentPosition }: Props) => 
 
       new mapboxgl.Marker(el)
         .setLngLat([dumpster.coordonnee.longitude, dumpster.coordonnee.latitude])
-        .setPopup(new mapboxgl.Popup().setHTML(`<p>${dumpster.id}</p>`))
+        .setPopup(new mapboxgl.Popup().setHTML(`
+          <p>Adresse : ${dumpster.adresse}</p>
+          <p>Ville : ${dumpster.ville.nom}</p>
+          <p>Code postal : ${dumpster.ville.code_postal}</p>
+        `))
         .addTo(currentMap);
     });
 
