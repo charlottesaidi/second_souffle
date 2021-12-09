@@ -1,0 +1,34 @@
+{% extends "@EasyAdmin/page/content.html.twig" %}
+
+{% block main %}
+
+    {% set default_record_url = "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=points-dapport-volontaire-dechets-et-moyens-techniques&q=&rows=20&facet=commune&facet=flux&facet=centre_ville&facet=prestataire&facet=zone&facet=pole&refine.commune=Toulouse" %}
+
+    {% set default_ville_url = "https://geo.api.gouv.fr/communes" %}
+
+    <h1>Appels API</h1>
+
+    <div class="card mt-4">
+
+        <div class="m-4">
+            <form action="{{ path('api_ville_gouv') }}" method="post" id="ville_api" name="ville_api">                
+                <h2>Insérer les communes en base de données</h2>
+                <div class="form-group mb-3">
+                    <input id="ville_url" type="text" name="ville_url" class="form-control mb-2" value="{{default_ville_url}}">
+                    <button class="btn btn-primary" type="submit">Appeler l'api</button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="m-4">
+            <form action="{{ path('api_record_gouv') }}" method="post" id="record_api" name="record_api">                
+                <h2>Insérer les bennes à verres de Toulouse en base de données</h2>
+                <div class="form-group mb-3">
+                    <input id="record_url" type="text" name="record_url" class="form-control mb-2" value="{{default_record_url}}">
+                    <button class="btn btn-primary" type="submit">Appeler l'api</button>
+                </div>
+            </form>
+        </div>
+        
+    </div>
+{% endblock %}
