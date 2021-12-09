@@ -26,7 +26,7 @@ class ApiRecordController extends AbstractController
     private $queryGenerator;
     private $entityManager;
     
-    public function __construct(RecordRepository $recordRepository, CoordonneeRepository $coordonneeRepository, VilleRepository $villeRepository, ApiInsertGenerator $insertGenerator, EntityManagerInterface $entityManager)
+    public function __construct(RecordRepository $recordRepository, CoordonneeRepository $coordonneeRepository, VilleRepository $villeRepository, ApiInsertGenerator $insertGenerator, ApiQueryGenerator $queryGenerator, EntityManagerInterface $entityManager)
     {
         $this->recordRepository = $recordRepository;
         $this->coordonneeRepository = $coordonneeRepository;
