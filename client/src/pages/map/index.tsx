@@ -9,7 +9,6 @@ const MapPage: NextPage = () => {
   return (
     <Page name={'Carte'}>
       <MapBox/>
-
     </Page>  
   )
 };
