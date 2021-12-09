@@ -124,35 +124,23 @@ const Mapbox: FC<Props> = ({ data, preparedCities, currentPosition }: Props) => 
 
 const Container = styled.div`
   .marker {
-    /* width: 10px; */
-    /* height: 10px; */
-    /* border-radius: 5px; */
     background-color: #fff;
-    /* border: 1px solid #ffffff; */
     cursor: pointer;
+    border-radius: 50%;
+    border: 5px solid #006b26;
+    width: 5px;
+    height: 5px;
 
-    /* .pin2 { */
-  /* position: absolute;
-  top: 40%;
-  left: 50%;
-  margin-left: 115px; */
-  /* position: relative; */
-  border-radius: 50%;
-  border: 5px solid #006b26;
-  width: 5px;
-  height: 5px;
-/* } */
-
-:after {
-  position: absolute;
-  content: '';
-  width: 0px;
-  height: 0px;
-  bottom: -12px;
-  left: -2px;
-  border: 5px solid transparent;
-  border-top: 5px solid #006b26;
-}
+      :after {
+        position: absolute;
+        content: '';
+        width: 0px;
+        height: 0px;
+        bottom: -12px;
+        left: -2px;
+        border: 5px solid transparent;
+        border-top: 5px solid #006b26;
+      }
   }
 `;
 
