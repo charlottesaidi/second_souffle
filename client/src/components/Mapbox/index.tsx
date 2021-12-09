@@ -1,38 +1,64 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarker } from '@fortawesome/free-solid-svg-icons';
+import { useRouter } from 'next/router';
 
-const MapBox: FC = () => {
-  const [map, setMap] = React.useState<mapboxgl.Map>();
-  const mapNode = React.useRef(null);
+import type { Dumpster } from 'src/types/dumpster';
+import type { PreparedCity } from 'src/pages/map';
 
-  React.useEffect(() => {
+type Props = {
+  data: Dumpster[];
+  preparedCities: PreparedCity[];
+  currentPosition: PreparedCity | undefined;
+};
+
+const Mapbox: FC<Props> = ({ data, preparedCities, currentPosition }: Props) => {
+  const router = useRouter();
+
+  const [map, setMap] = useState<mapboxgl.Map | null>(null);
+  const [currentPositionMarker, setCurrentPositionMarker] = useState<mapboxgl.Marker | null>(null);
+
+  const mapNode = useRef(null);
+
+  useEffect(() => {
     const node = mapNode.current;
-    // if the window object is not found, that means
-    // the component is rendered on the server
-    // or the dom node is not initialized, then return early
     if (typeof window === 'undefined' || node === null) return;
-    // otherwise, create a map instance
-    const mapboxMap = new mapboxgl.Map({
+
+    const currentMap = new mapboxgl.Map({
       container: node,
       accessToken: process.env.NEXT_PUBLIC_MAPBOX_TOKEN,
       style: 'mapbox://styles/mapbox/streets-v11',
-      center: [1.1, 49.5],
-      zoom: 9,
+      center: currentPosition
+        ? [
+          currentPosition.coordinates.longitude,
+          currentPosition.coordinates.latitude
+        ]
+        : [1.1, 49.5],
+      zoom: currentPosition?.zoom || 9,
     });
-    // controle pannel de la map
-    mapboxMap.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
-    // save the map object to React.useState
-    setMap(mapboxMap);
+    
+    currentMap.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
+    setMap(currentMap);
+
+    data.forEach((dumpster: Dumpster) => {
+      const el = document.createElement('div');
+      el.className = 'marker';
+
+      new mapboxgl.Marker(el)
+        .setLngLat([dumpster.coordonnee.longitude, dumpster.coordonnee.latitude])
+        .setPopup(new mapboxgl.Popup().setHTML(`<p>${dumpster.id}</p>`))
+        .addTo(currentMap);
+    });
 
     return () => {
-      mapboxMap.remove();
+      currentMap.remove();
     };
-  }, []);
-  //géolocalisation
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
+
   const handleCurrentPosition = () => {
     navigator.geolocation.getCurrentPosition((position) => {
       if (map) {
@@ -42,119 +68,91 @@ const MapBox: FC = () => {
           bearing: 0,
           essential: true,
         });
+        if (currentPositionMarker) currentPositionMarker.remove();
+
+        const el = document.createElement('div');
+        el.className = 'marker';
+
+        const marker = new mapboxgl.Marker(el)
+          .setLngLat([position.coords.longitude, position.coords.latitude])
+          .addTo(map);
+        setCurrentPositionMarker(marker);
       }
     });
   };
-  const CenterLyon = () => {
+
+  const handleFlyTo = (city: PreparedCity) => {
     if (map) {
+      router.push(`/map/${city.id}`, undefined, { shallow: true });
       map.flyTo({
-        center: [4.85, 45.75],
-        zoom: 13,
-        bearing: 0,
-        essential: true,
-      });
-    }
-  };
-  const CenterParis = () => {
-    if (map) {
-      map.flyTo({
-        center: [2.320041, 48.8588897],
-        zoom: 13,
-        bearing: 0,
-        essential: true,
-      });
-    }
-  };
-  const CenterMontpellier = () => {
-    if (map) {
-      map.flyTo({
-        center: [3.8767337, 43.6112422],
-        zoom: 13,
-        bearing: 0,
-        essential: true,
-      });
-    }
-  };
-  const CenterMarseille = () => {
-    if (map) {
-      map.flyTo({
-        center: [5.3699525, 43.2961743],
-        zoom: 13,
-        bearing: 0,
-        essential: true,
-      });
-    }
-  };
-  const CenterToulouse = () => {
-    if (map) {
-      map.flyTo({
-        center: [1.4442469, 43.6044622],
-        zoom: 13,
-        bearing: 0,
-        essential: true,
+        center: [city.coordinates.longitude, city.coordinates.latitude],
+        zoom: city.zoom || 13,
+        bearing: city.bearing || 0,
+        essential: city.essential || true,
       });
     }
   };
 
   return (
-    <div>
+    <Container>
       <div ref={mapNode} style={{ width: '100%', height: '95vh' }} />
       <Pannel>
-        <button onClick={handleCurrentPosition} className="nav-button map">
+        <FlyToCityButton onClick={handleCurrentPosition} className="nav-button map">
           <div>
             <FontAwesomeIcon icon={faMapMarker} size="xs" />
           </div>
-        </button>
+        </FlyToCityButton>
         <Filters>
-          <button onClick={CenterParis} className="nav-button">
-            Paris
-          </button>
-          <button onClick={CenterMarseille} className="nav-button">
-            Marseille
-          </button>
-          <button onClick={CenterLyon} className="nav-button">
-            Lyon
-          </button>
-          <button onClick={CenterMontpellier} className="nav-button">
-            Montpellier
-          </button>
-          <button onClick={CenterToulouse} className="nav-button">
-            Toulouse
-          </button>
+          {preparedCities.map((city: PreparedCity) => (
+            <FlyToCityButton
+              key={city.id}
+              onClick={() => handleFlyTo(city)}
+              className="nav-button"
+            >
+              {city.name}
+            </FlyToCityButton>
+          ))}
         </Filters>
       </Pannel>
-    </div>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  .marker {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #2ecc71;
+    border: 1px solid #ffffff;
+    cursor: pointer;
+  }
+`;
 
 const Pannel = styled.div`
   position: absolute;
   top: 10%;
   left: 1%;
   width: 300px;
+`;
 
-  .nav-button {
-    border-radius: 15px;
-    background-color: #789089;
-    color: #fff;
-    padding: 5px 20px;
-    cursor: pointer;
-    margin-bottom: 5px;
-    border: none;
-    transition: all 0.3s ease-in-out;
-    font-family: "Monserat", sans-serif;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    font-size: 0.7rem;
-    font-weight: 600;
-    margin-right: 5px;
+const FlyToCityButton = styled.button<{ active?: boolean }>`
+  border-radius: 15px;
+  background-color: ${({ active }) => (active ? '#FFF' : '#789089')};
+  color: ${({ active }) => (active ? '#000' : '#FFF')};
+  padding: 5px 20px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  border: none;
+  transition: all 0.3s ease-in-out;
+  font-family: "Monserat", sans-serif;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin-right: 5px;
 
-    :hover {
-      background-color: #4f5f5a;
-    }
-  }
-
-  .nav-button.map {
+  .map {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -175,6 +173,10 @@ const Pannel = styled.div`
       border-radius: 50%;
     }
   }
+
+  :hover {
+    background-color: #4f5f5a;
+  }
 `;
 
 const Filters = styled.div`
@@ -184,4 +186,4 @@ const Filters = styled.div`
   flex-wrap: wrap;
 `;
 
-export default MapBox;
+export default Mapbox;
