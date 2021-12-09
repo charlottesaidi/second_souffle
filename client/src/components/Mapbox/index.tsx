@@ -24,18 +24,7 @@ const MapBox: FC = () => {
         zoom: 9,
       });
       
-      const handleCurrentPosition = () => {
-        navigator.geolocation.getCurrentPosition((position) => {
-          if (map) {
-            map.flyTo({
-              center: [position.coords.longitude, position.coords.latitude],
-              zoom: 15,
-              bearing: 0,
-              essential: true,
-            });
-          }
-        });
-      };
+      
 
       mapboxMap.addControl(new mapboxgl.NavigationControl(), "bottom-right");
      
@@ -45,12 +34,24 @@ const MapBox: FC = () => {
   
       return () => {
         mapboxMap.remove();
-        // <button onClick={handleCurrentPosition}>géolocalisation</button>
       };
     }, []);
+    const handleCurrentPosition = () => {
+      navigator.geolocation.getCurrentPosition((position) => {
+        if (map) {
+          map.flyTo({
+            center: [position.coords.longitude, position.coords.latitude],
+            zoom: 15,
+            bearing: 0,
+            essential: true,
+          });
+        }
+      });
+    };
     return(
       <div>
         <div ref={mapNode} style={{ width: "100%", height: "880px" }} />
+        <button onClick={handleCurrentPosition}>géolocalisation</button>
       </div>
     );   
 };

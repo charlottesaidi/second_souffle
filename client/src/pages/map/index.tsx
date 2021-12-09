@@ -8,10 +8,11 @@ import MapBox from "../../components/Mapbox";
 const MapPage: NextPage = () => {
   return (
     <Page name={'Carte'}>
-      
       <MapBox/>
+
     </Page>  
   )
 };
+
 
 export default MapPage;
