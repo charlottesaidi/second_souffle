@@ -23,7 +23,6 @@ class ApiUserController extends AbstractController
     public function countRecord() {
         $response = new Response;
         $response->setContent($this->userRepository->countElements());
-        $response->headers->set('Access-Control-Allow-Origin', '*');
         return $response;
     
     }

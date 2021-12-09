@@ -13,6 +13,7 @@ type Props = {
   links: NavbarLink[];
 };
 
+
 const Navbar: FC<Props> = ({ links }: Props) => {
   const [menuActive, setMenuActive] = useState<boolean>(false);
 
