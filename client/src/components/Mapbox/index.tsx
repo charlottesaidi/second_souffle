@@ -104,13 +104,13 @@ const Mapbox: FC<Props> = ({ data, preparedCities, currentPosition }: Props) => 
         </FlyToCityButton>
         <Filters>
           {preparedCities.map((city: PreparedCity) => (
-            <FlyToCityButton
+            <FlyToCity
               key={city.id}
               onClick={() => handleFlyTo(city)}
               className="nav-button"
             >
               {city.name}
-            </FlyToCityButton>
+            </FlyToCity>
           ))}
         </Filters>
       </Pannel>
@@ -137,6 +137,40 @@ const Pannel = styled.div`
 `;
 
 const FlyToCityButton = styled.button<{ active?: boolean }>`
+  border-radius: 50%;
+  background-color: ${({ active }) => (active ? '#FFF' : '#789089')};
+  color: ${({ active }) => (active ? '#000' : '#FFF')};
+  cursor: pointer;
+  margin-bottom: 5px;
+  border: none;
+  transition: all 0.3s ease-in-out;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin-right: 5px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: green;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+    }
+
+  :hover {
+    background-color: #4f5f5a;
+  }
+`;
+
+const FlyToCity = styled.button<{ active?: boolean }>`
   border-radius: 15px;
   background-color: ${({ active }) => (active ? '#FFF' : '#789089')};
   color: ${({ active }) => (active ? '#000' : '#FFF')};
@@ -151,28 +185,6 @@ const FlyToCityButton = styled.button<{ active?: boolean }>`
   font-size: 0.7rem;
   font-weight: 600;
   margin-right: 5px;
-
-  .map {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    border-radius: 50%;
-    padding: 0;
-    width: 30px;
-    height: 30px;
-    margin-bottom: 10px;
-
-    div {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: green;
-      width: 70%;
-      height: 70%;
-      border-radius: 50%;
-    }
-  }
 
   :hover {
     background-color: #4f5f5a;
