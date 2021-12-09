@@ -1,5 +1,9 @@
 # Second Souffle  
 
+#### Live Site  
+Application : [secondsouffle.vercel.app](https://secondsouffle.vercel.app/)  
+API et Admin : [secondsouffle.keepvibz.ovh/](https://www.secondsouffle.keepvibz.ovh/)  
+
 #### Nouvelle entité : User + système d'authentification  
 
 Création bdd si besoin :  
@@ -60,14 +64,6 @@ or
 
 # Then startup the Symfony Encore server
 > yarn dev
-```
+```  
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 * Access the symfony server at http://localhost:8000 and next.js server at http://localhost:3000
-=======
-* Access the symfony server at http://localhost:8000 and next.js server at http://localhost:3000
->>>>>>> Update README.md
-=======
-* Access the symfony server at http://localhost:8000 and next.js server at http://localhost:3000
->>>>>>> b29b3f3... map branch
