@@ -29,6 +29,8 @@ class ApiInsertGenerator
         $content = $this->queryGenerator->externalRequest($method, $url);
         $nbrCreated = 0;
         $inserted = [];
+        $keys = [$nom, $code];
+
         foreach($content as $item) {
             if(array_key_exists($pop, $item)) {
                 if($item[$pop] >= '100000') {
@@ -37,7 +39,7 @@ class ApiInsertGenerator
             }
         }
         foreach ($inserted as $item) {
-            if(!array_key_exists($nom, $item) || !array_key_exists($code, $item) || is_null($item[$nom]) || is_null($item[$code])) {
+            if($this->keyAbsentFromJson($item, $keys)) {
                 $response->setStatusCode($errorCode);
                 $response->setContent('La base de donnée n\'a renvoyé aucun résultat');
             } else {
@@ -64,9 +66,10 @@ class ApiInsertGenerator
         $raw = $this->queryGenerator->externalRequest($method, $url);
         $content = $raw['records'];
         $nbrCreated = 0;
+        $keys = [$recordCity, $recordPostalCode, $recordCoordinate, $recordVoie, $recordNumeroVoie];
 
         foreach ($content as $item) { 
-            if(!array_key_exists($recordId, $item) || !array_key_exists($recordCity, $item['fields']) || !array_key_exists($recordPostalCode, $item['fields']) || !array_key_exists($recordCoordinate, $item['fields']) || !array_key_exists($recordVoie, $item['fields']) || !array_key_exists($recordNumeroVoie, $item['fields']) || is_null($item[$recordId]) || is_null($item['fields'][$recordCity]) || is_null($item['fields'][$recordPostalCode]) || is_null($item['fields'][$recordVoie]) || is_null($item['fields'][$recordCoordinate]) || is_null($item['fields'][$recordVoie])|| is_null($item['fields'][$recordNumeroVoie])) {
+            if($this->keyAbsentFromJson($item, [$recordId]) || $this->keyAbsentFromJson($item['fields'], $keys)) {
                 $response->setStatusCode($errorCode);
                 $response->setContent('La base de donnée n\'a renvoyé aucun résultat');
             } else {
@@ -104,5 +107,14 @@ class ApiInsertGenerator
             }
         }
         $this->entityManager->flush();
+    }
+
+    public function keyAbsentFromJson($array, array $keys) 
+    {
+        foreach($keys as $item) {
+            if(!array_key_exists($item, $array) || is_null($array[$item])) {
+                return true;
+            }
+        }
     }
 }

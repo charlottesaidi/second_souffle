@@ -75,7 +75,7 @@ class ApiRecordController extends AbstractController
     public function countRecord() {
         $response = new Response;
         $response->setContent($this->recordRepository->countElements());
-
+        $response->headers->set('Access-Control-Allow-Origin', '*');
         return $response;
     
     }
@@ -98,6 +98,7 @@ class ApiRecordController extends AbstractController
         $jsonContent = $this->queryGenerator->handleCircularReference($records);
         $response->setStatusCode(Response::HTTP_OK);
         $response->setContent($jsonContent);
+        $response->headers->set('Access-Control-Allow-Origin', '*');
 
         return $response;
     }
@@ -115,6 +116,7 @@ class ApiRecordController extends AbstractController
             $response->setStatusCode(Response::HTTP_OK);
             $response->setContent($jsonContent);
         }
+        $response->headers->set('Access-Control-Allow-Origin', '*');
 
         return $response;
     }
@@ -143,6 +145,7 @@ class ApiRecordController extends AbstractController
             $response->setStatusCode(Response::HTTP_CREATED);
             $response->setContent('Element créé avec succès');
         }
+        $response->headers->set('Access-Control-Allow-Origin', '*');
         
         return $response;
     }
@@ -161,6 +164,7 @@ class ApiRecordController extends AbstractController
             $response->setStatusCode(Response::HTTP_OK);
             $response->setContent('Element supprimé avec succès');
         }
+        $response->headers->set('Access-Control-Allow-Origin', '*');
 
         return $response;
     }
@@ -196,7 +200,8 @@ class ApiRecordController extends AbstractController
 
         $response->setStatusCode(Response::HTTP_OK);
         $response->setContent('Element modifié avec succès');
-        
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
         return $response;
     }
 }
