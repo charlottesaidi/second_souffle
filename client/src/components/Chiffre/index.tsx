@@ -2,12 +2,17 @@ import React, { FC } from 'react';
 
 import styled from 'styled-components';
 
-const ChiffreClef: FC = () => {
+type Props = {
+  data: number;
+  title: string;
+};
+
+const ChiffreClef: FC<Props> = ({ data, title }: Props) => {
   return (
     <Chiffre>
       <div className="chiffre-content">
-        <div className="chiffre-content__number">15 000</div>
-        <p>nombres de bennes</p>
+        <div className="chiffre-content__number">{data}</div>
+        <p>{title}</p>
       </div>
     </Chiffre>
   );

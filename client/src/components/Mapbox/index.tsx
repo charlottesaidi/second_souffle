@@ -145,7 +145,7 @@ const FlyToCityButton = styled.button<{ active?: boolean }>`
   margin-bottom: 5px;
   border: none;
   transition: all 0.3s ease-in-out;
-  font-family: "Monserat", sans-serif;
+  font-family: "Montserrat", sans-serif;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   font-size: 0.7rem;
