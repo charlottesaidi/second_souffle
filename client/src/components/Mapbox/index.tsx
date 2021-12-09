@@ -23,15 +23,36 @@ const MapBox: FC = () => {
         center: [1.1, 49.5],
         zoom: 9,
       });
-  
+      
+      const handleCurrentPosition = () => {
+        navigator.geolocation.getCurrentPosition((position) => {
+          if (map) {
+            map.flyTo({
+              center: [position.coords.longitude, position.coords.latitude],
+              zoom: 15,
+              bearing: 0,
+              essential: true,
+            });
+          }
+        });
+      };
+
+      mapboxMap.addControl(new mapboxgl.NavigationControl(), "bottom-right");
+     
+      
       // save the map object to React.useState
       setMap(mapboxMap);
   
       return () => {
         mapboxMap.remove();
+        // <button onClick={handleCurrentPosition}>géolocalisation</button>
       };
     }, []);
-    return <div ref={mapNode} style={{ width: "1000px", height: "880px" }} />;
+    return(
+      <div>
+        <div ref={mapNode} style={{ width: "100%", height: "880px" }} />
+      </div>
+    );   
 };
   
 export default MapBox;
