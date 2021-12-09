@@ -7,6 +7,7 @@ type DumpsterCoordinate = {
 export type Dumpster = {
   id: string;
   numero_benne: string;
+  voie: number;
   adresse: string;
   coordonnee: DumpsterCoordinate;
   ville: any;
