@@ -11,7 +11,8 @@ const Footer: FC = () => {
 };
 
 const Container = styled.footer`
-    padding: 20px 5%;
+    /* padding: 20px 5%; */
+    height: 5vh;
     display: flex;
     justify-content: center;
     align-items: center;
