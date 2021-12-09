@@ -4,4 +4,6 @@ import { request } from 'src/utils/request';
 
 const getAllDumpsters = async () => await request<Dumpster[]>('/api/records', { method: 'GET' });
 
-export { getAllDumpsters };
+const countDumpsters = async () => await request<number>('/api/records/count', { method: 'GET' });
+
+export { getAllDumpsters, countDumpsters };

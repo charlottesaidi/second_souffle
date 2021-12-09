@@ -81,7 +81,6 @@ class ApiVilleController extends AbstractController
 
         $response->setStatusCode(Response::HTTP_OK);
         $response->setContent($jsonContent);
-        $response->headers->set('Access-Control-Allow-Origin', '*');
 
         return $response;
     }
@@ -90,7 +89,6 @@ class ApiVilleController extends AbstractController
     public function countRecord() {
         $response = new Response;
         $response->setContent($this->villeRepository->countElements());
-        $response->headers->set('Access-Control-Allow-Origin', '*');
         return $response;
     
     }
@@ -108,7 +106,6 @@ class ApiVilleController extends AbstractController
             $response->setStatusCode(Response::HTTP_OK);
             $response->setContent($jsonContent);
         }
-        $response->headers->set('Access-Control-Allow-Origin', '*');
 
         return $response;
     }
@@ -132,7 +129,6 @@ class ApiVilleController extends AbstractController
             
             $this->entityManager->flush();
         }
-        $response->headers->set('Access-Control-Allow-Origin', '*');
 
         return $response;
     }
@@ -151,7 +147,6 @@ class ApiVilleController extends AbstractController
             $response->setStatusCode(Response::HTTP_OK);
             $response->setContent('Element supprimé avec succès');
         }
-        $response->headers->set('Access-Control-Allow-Origin', '*');
 
         return $response;
     }
@@ -173,7 +168,6 @@ class ApiVilleController extends AbstractController
 
         $response->setStatusCode(Response::HTTP_OK);
         $response->setContent('Element modifié avec succès');
-        $response->headers->set('Access-Control-Allow-Origin', '*');
 
         return $response;
     }
