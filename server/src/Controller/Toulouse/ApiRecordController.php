@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Toulouse;
 
 use App\Entity\Record;
 use App\Repository\RecordRepository;
@@ -36,7 +36,7 @@ class ApiRecordController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-    #[Route('/gouv/records', name: 'api_record_gouv', methods: ['GET'])]    
+    #[Route('/gouv/records', name: 'api_record_gouv', methods: ['GET', 'POST'])]    
     /**
      * Method insertRecordsFromDataGouv [insertion des bennes à verres en bdd depuis api gouvernementale]
      *
@@ -45,11 +45,12 @@ class ApiRecordController extends AbstractController
      * @return Response
      */
     public function insertRecordsFromDataGouv(Request $request): Response {
-        // ToDo : lancer la fonction automatiquement (tous les jours, toutes les semaines...)
         $response = new Response();
+        $url = $request->request->get('record_url');
+
         $this->insertGenerator->recordsInsert(
             'GET',
-            'https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=points-dapport-volontaire-dechets-et-moyens-techniques&q=&rows=20&facet=commune&facet=flux&facet=centre_ville&facet=prestataire&facet=zone&facet=pole&refine.commune=Toulouse',
+            $url,
             'recordid',
             'commune',
             'code_insee',

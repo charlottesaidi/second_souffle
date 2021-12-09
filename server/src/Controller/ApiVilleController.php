@@ -28,7 +28,7 @@ class ApiVilleController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-    #[Route('/gouv/villes', name: 'api_ville_gouv', methods: ['GET'])]    
+    #[Route('/gouv/villes', name: 'api_ville_gouv', methods: ['GET', 'POST'])]    
     /**
      * Method insertCitiesFromDataGouv [insertion des communes en bdd depuis api gouvernementale]
      *
@@ -38,10 +38,11 @@ class ApiVilleController extends AbstractController
      */
     public function insertCitiesFromDataGouv(Request $request): Response {
         $response = new Response();
+        $url = $request->request->get('ville_url');
 
         $this->insertGenerator->citiesInsert(
             'GET',
-            'https://geo.api.gouv.fr/communes',
+            $url,
             'population',
             'nom',
             'code',
