@@ -174,6 +174,7 @@ class ApiRecordController extends AbstractController
     {
         $data = $request->query->all();
         $coordonnee = $this->coordonneeRepository->find($record->getCoordonnee()->getId());
+        $ville = $this->villeRepository->find($record->getVille()->getId());
         $response = new Response();
 
         if(!empty($data['numero_benne'])) {
@@ -200,7 +201,7 @@ class ApiRecordController extends AbstractController
         $response->setStatusCode(Response::HTTP_OK);
         $response->setContent('Element modifié avec succès');
         $response->headers->set('Access-Control-Allow-Origin', '*');
-        
+
         return $response;
     }
 }
